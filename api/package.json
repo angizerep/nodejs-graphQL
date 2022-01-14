@@ -4,6 +4,9 @@
   "description": "Backend API with GraphQL",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/index.ts"
+  },
   "dependencies": {
     "apollo-server": "^3.6.1",
     "graphql": "^16.2.0",
