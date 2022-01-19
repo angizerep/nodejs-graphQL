@@ -1,10 +1,26 @@
 scalar DateTime
 
+type Query {
+    avos(skip: Int, take: Int, where: AvoWhereInput): [Avocado]!
+    avo(id: ID!): Avocado
+}
+
+type Mutation {
+    createAvo(data: AvoCreateInput!): Avocado!
+}
+
 interface BaseModel {
     id: ID!
     createdAt: DateTime!
     updatedAt: DateTime
     deletedAt: DateTime
+}
+
+type Attributes {
+    description: String
+    shape: String
+    hardiness: String
+    taste: String
 }
 
 type Avocado implements BaseModel {
@@ -17,37 +33,22 @@ type Avocado implements BaseModel {
     sku: String!
     price: Float!
     image: String!
-    attributes: AvocadoAttributes!
+    attributes: Attributes!
 }
 
-type AvocadoAttributes {
-    description: String!
-    shape: String!
-    hardiness: String!
-    taste: String!
-}
-
-input AvocadoInput {
+input AvoCreateInput {
     name: String!
     price: Float!
+    sku: String!
     image: String!
-    description: String!
-    shape: String!
-    hardiness: String!
-    taste: String!
-}
-
-type Query {
-    getAvos(skip: Int, take: Int, where: AvoWhereInput): [Avocado]!
-    getAvo(id: Int!): Avocado
-}
-
-type Mutation {
-    createAvo(data: AvocadoInput!): Avocado!
+    description: String
+    shape: String
+    hardiness: String
+    taste: String
 }
 
 input AvoWhereInput {
-    name: StringFilterInput,
+    name: StringFilterInput
     price: Float
 }
 
