@@ -47,3 +47,21 @@ input AvoCreateInput {
     taste: String
 }
 
+input AvoWhereInput {
+    name: StringFilterInput
+    price: Float
+}
+
+input StringFilterInput {
+    equals: String
+    in: [String]
+    notIn: [String]
+    lt: String
+    lte: String
+    gt: String
+    gte: String
+    contains: String
+    startsWith: String
+    endsWith: String
+    not: String
+}
